@@ -32,12 +32,15 @@ It means you can get from the vertex A to the vertex B, but you can not get back
 ## Alerts
 
 When working with app you can get 4 type of alerts:
-    1. `The route can not be built from start point`.
-    ![img_003](https://user-images.githubusercontent.com/27812408/43416376-c14592de-9440-11e8-8bd2-c8a53b328114.png)
-    2. `The route can not be built to end point`.
-    ![img_001](https://user-images.githubusercontent.com/27812408/43416434-e5b673ae-9440-11e8-9e74-51fdad3fa6b8.png)
-    3. `The start and end points of the route are the same: select another end point`.
-    4. `The start and end points of the route are not linked: select another end point`.
 
+The route can not be built from start point.
 
+![img_003](https://user-images.githubusercontent.com/27812408/43416376-c14592de-9440-11e8-8bd2-c8a53b328114.png)
 
+The route can not be built to end point.
+
+![img_001](https://user-images.githubusercontent.com/27812408/43416434-e5b673ae-9440-11e8-9e74-51fdad3fa6b8.png)
+
+The start and end points of the route are the same: select another end point.
+
+The start and end points of the route are not linked: select another end point.
