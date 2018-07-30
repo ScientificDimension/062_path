@@ -1,0 +1,17 @@
+In the attachment JSON (a1s.rtf) and JPG-picture.
+
+JSON provides a graph of roads and other information.
+The JPG picture is used as the background image of the map.
+
+(There are no limitations on supported versions of ios: it is desirable to use swift as the programming language.)
+
+The essence of the problem:
+
+We need to develop a demo application and send us the source of the finished project.
+A map (JPG picture in the attachment) should be displayed on the screen.
+
+When tapping on the map, the starting point of the route is selected. 
+
+At the second tap, the final point on the map is selected, and the shortest route from the initial to the final point is laid. 
+
+The next tap resets the selected points and route.
