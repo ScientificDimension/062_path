@@ -26,7 +26,9 @@ A map (JPG picture in the attachment) should be displayed on the screen.
 ## Directed graph
 
 Directed graph was used
+
 ![img_002](https://user-images.githubusercontent.com/27812408/43416140-277065d0-9440-11e8-8811-44176f33e2e3.png)
+
 It means you can get from the vertex A to the vertex B, but you can not get back in the same way
 
 ## Alerts
