@@ -15,6 +15,6 @@ enum VertexType {
 
 protocol IDrawingAssistant {
     func drawAllPoints(on layer: CAShapeLayer)
-    func draw(route: [Vertex], on layer: CAShapeLayer)
+    func draw(route: [Vertex], on layer: CAShapeLayer, useVisible: Bool)
     func highlight(vertex: Vertex, type: VertexType, on layer: CAShapeLayer)
 }

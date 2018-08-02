@@ -9,6 +9,7 @@
 import Foundation
 
 protocol IScaleAdjuster {
+    func calibrate(_ points: PointsVector)
     func adjustPointsToScreenSize(_ points: PointsVector) -> PointsVector
 }
 

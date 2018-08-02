@@ -24,7 +24,10 @@ enum Constants {
         }
     }
     enum ScreenScale {
-        static let offsetX: CGFloat = 15
-        static let offsetY: CGFloat = 10
+        static let inset = UIEdgeInsets(
+            top: 20 / 320 * UIScreen.main.bounds.height,
+            left: 0,
+            bottom: 0,
+            right: 20 / 568 * UIScreen.main.bounds.width)
     }
 }

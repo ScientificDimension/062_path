@@ -26,8 +26,14 @@ class Processor: IProcessor {
     private let stateTracker: IStateTracker = StateTracker()
     private let dataProvider: IDataProvider = DataProvider()
     private let dataParser: IDataParser = DataParser()
-    private let scaleAdjuster: IScaleAdjuster = ScaleAdjuster()
     private let layerProvider: IDrawingLayerProvider = DrawingLayerProvider()
+    
+    private lazy var scaleAdjuster: IScaleAdjuster = {
+        let adjuster = ScaleAdjuster()
+        let rawPoints = dataParser.getPointsVector(from: data)
+        adjuster.calibrate(rawPoints)
+        return adjuster
+    }()
     
     private lazy var data: Container = {
         return dataProvider.getData()
@@ -38,7 +44,12 @@ class Processor: IProcessor {
     private lazy var distanceMatrix: DistanceMatrix = {
         return dataParser.getDistanceMatrix(from: data)
     }()
-    private lazy var points: PointsVector = {
+    private lazy var visiblePointsMatrix: VisiblePointsMatrix = {
+        let rawMatrix = dataParser.getVisiblePointsMatrix(from: data)
+        let adjustedMatrix = rawMatrix.map{ $0.map{ scaleAdjuster.adjustPointsToScreenSize($0) } }
+        return adjustedMatrix
+    }()
+    private lazy var nodalPoints: PointsVector = {
         let rawPoints = dataParser.getPointsVector(from: data)
         let adjustedPoints = scaleAdjuster.adjustPointsToScreenSize(rawPoints)
         
@@ -47,8 +58,8 @@ class Processor: IProcessor {
     
     private lazy var routesCalculator: IRoutesCalculator = RoutesCalculator(transitionMatrix)
     private lazy var vertexValidator: IVertexValidator = VertexValidator(transitionMatrix)
-    private lazy var drawingAssistant: IDrawingAssistant = DrawingAssistant(points)
-    private lazy var tapVertexFinder: ITapVertexFinder = TapVertexFinder(points)
+    private lazy var drawingAssistant: IDrawingAssistant = DrawingAssistant(nodalPoints, visiblePointsMatrix)
+    private lazy var tapVertexFinder: ITapVertexFinder = TapVertexFinder(nodalPoints)
     private lazy var distanceEstimator: IRouteDistanceEstimator = RouteDistanceEstimator(distanceMatrix)
     
     // MARK: - Terminal Rout Vertices
@@ -147,7 +158,7 @@ class Processor: IProcessor {
                 return
             }
             let routeToDraw = distanceEstimator.getRouteWithMinimalDistance(routes)
-            drawingAssistant.draw(route: routeToDraw, on: layerProvider.routesLayer)
+            drawingAssistant.draw(route: routeToDraw, on: layerProvider.routesLayer, useVisible: true)
             
         case .completed:
             

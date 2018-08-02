@@ -10,7 +10,12 @@ import UIKit
 
 class ScaleAdjuster: IScaleAdjuster {
     
-    func adjustPointsToScreenSize(_ points: PointsVector) -> PointsVector {
+    private var sourceX: Interval = .one
+    private var targetX: Interval = .one
+    private var sourceY: Interval = .one
+    private var targetY: Interval = .one
+    
+    func calibrate(_ points: PointsVector) {
         precondition(!points.isEmpty, "PointsVector should not be empty")
         var sourceX: Interval {
             let maxX = points.map { $0.x }.max()!
@@ -19,8 +24,8 @@ class ScaleAdjuster: IScaleAdjuster {
         var targetX: Interval {
             let screenWidth = UIScreen.main.bounds.width
             return Interval(
-                min: Constants.ScreenScale.offsetX,
-                max: screenWidth - Constants.ScreenScale.offsetX)
+                min: Constants.ScreenScale.inset.left,
+                max: screenWidth - Constants.ScreenScale.inset.right)
         }
         var sourceY: Interval {
             let maxY = points.map { $0.y }.max()!
@@ -29,8 +34,20 @@ class ScaleAdjuster: IScaleAdjuster {
         var targetY: Interval {
             let screenHeight = UIScreen.main.bounds.height
             return Interval(
-                min: Constants.ScreenScale.offsetY, max:
-                screenHeight - Constants.ScreenScale.offsetY)
+                min: Constants.ScreenScale.inset.bottom, max:
+                screenHeight - Constants.ScreenScale.inset.top)
+        }
+        
+        self.sourceX = sourceX
+        self.targetX = targetX
+        
+        self.sourceY = sourceY
+        self.targetY = targetY
+    }
+    
+    func adjustPointsToScreenSize(_ points: PointsVector) -> PointsVector {
+        guard !points.isEmpty else {
+            return points
         }
         let adjustedPoints: PointsVector = points.map { oldPoint in
             let adjustedX = oldPoint.x.extrapolate(source: sourceX, target: targetX)

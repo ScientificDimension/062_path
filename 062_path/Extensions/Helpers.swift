@@ -8,6 +8,25 @@
 
 import UIKit
 
+struct Position {
+    let row: String
+    let column: String
+    
+    var reversed: Position {
+        return Position(row: column, column: row)
+    }
+}
+
+extension Dictionary where Key == String, Value == [String: Path] {
+    func getPath(by position: Position) -> Path? {
+        return self[position.row]?[position.column]
+    }
+    
+    subscript(_ position: Position) -> Path? {
+        return self[position.row]?[position.column]
+    }
+}
+
 extension Array where Element == [Int] {
     func getToVertices(from vertex: Int) -> [Int] {
         let toVertices = self[vertex]
@@ -76,5 +95,19 @@ extension CGRect {
             y: squareInCenter.y - size / 2,
             width: size,
             height: size)
+    }
+}
+
+extension UIBezierPath {
+    func addLine(from start: CGPoint, to final: CGPoint) {
+        move(to: start)
+        addLine(to: final)
+    }
+    
+    convenience init(pointIn: CGPoint, size: CGFloat) {
+        self.init()
+        let square = CGRect(squareInCenter: pointIn, size: size)
+        let point = UIBezierPath(ovalIn: square)
+        append(point)
     }
 }

@@ -11,9 +11,11 @@ import UIKit
 typealias PointsVector = [CGPoint]
 typealias DistanceMatrix = [[Double]]
 typealias TransitionMatrix = [[Int]] 
+typealias VisiblePointsMatrix = [[[CGPoint]]]
 
 protocol IDataParser {
     func getPointsVector(from data: Container) -> PointsVector
     func getDistanceMatrix(from data: Container) -> DistanceMatrix
     func getTransitionMatrix(from data: Container) -> TransitionMatrix
+    func getVisiblePointsMatrix(from data: Container) -> VisiblePointsMatrix
 }
