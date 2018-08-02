@@ -21,7 +21,7 @@ A map (JPG picture in the attachment) should be displayed on the screen.
 - iOS
 
 ## Screenshots
-![output](https://user-images.githubusercontent.com/27812408/43611565-376f213c-96b2-11e8-893c-98e33a8e72b9.gif)
+![output](https://user-images.githubusercontent.com/27812408/43611781-f4170868-96b2-11e8-8fb0-3ff030077b44.gif)
 
 ## Directed graph
 
