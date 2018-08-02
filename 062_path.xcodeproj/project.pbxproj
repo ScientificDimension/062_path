@@ -43,6 +43,7 @@
 		92F7E6AD210F333E00DCB2CD /* AlertAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F7E6AC210F333E00DCB2CD /* AlertAssistant.swift */; };
 		92F7E6AF210F334400DCB2CD /* IAlertAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F7E6AE210F334300DCB2CD /* IAlertAssistant.swift */; };
 		92F7E6B2210F683D00DCB2CD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F7E6B1210F683D00DCB2CD /* Constants.swift */; };
+		92F7E6B42113ABDE00DCB2CD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 92F7E6B32113ABDD00DCB2CD /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		92F7E6AC210F333E00DCB2CD /* AlertAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAssistant.swift; sourceTree = "<group>"; };
 		92F7E6AE210F334300DCB2CD /* IAlertAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAlertAssistant.swift; sourceTree = "<group>"; };
 		92F7E6B1210F683D00DCB2CD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		92F7E6B32113ABDD00DCB2CD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		92F7E5EE210C5F3A00DCB2CD = {
 			isa = PBXGroup;
 			children = (
+				92F7E6B32113ABDD00DCB2CD /* README.md */,
 				92F7E5F9210C5F3A00DCB2CD /* 062_path */,
 				92F7E5F8210C5F3A00DCB2CD /* Products */,
 			);
@@ -377,6 +380,7 @@
 			files = (
 				92F7E6A4210F1AE100DCB2CD /* Main.storyboard in Resources */,
 				92F7E6A3210F1AE100DCB2CD /* LaunchScreen.storyboard in Resources */,
+				92F7E6B42113ABDE00DCB2CD /* README.md in Resources */,
 				92F7E69C210F1AC600DCB2CD /* Assets.xcassets in Resources */,
 				92F7E60E210C60CF00DCB2CD /* data.json in Resources */,
 			);
